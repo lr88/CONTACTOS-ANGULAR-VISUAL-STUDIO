@@ -11,22 +11,22 @@
       <input type="text" class="form-control" [(ngModel)]="stringBuscado">
     </div>
     <br>
-    <div class="row">
-      <table class="table">
+    <div class="row" class="table-responsive">
+      <table class="table" *ngIf="getContactos()">
         <thead >
           <th>Nombre y Apellido</th>
+          <th>Email</th>
           <th>Favorito</th>
-          <th>Cambio de Favoritismo</th>
-        
         </thead>
         <tbody>
           <tr *ngFor="let contacto of getContactos()">
-            <td>{{contacto.nombreApellido}}</td>
+            <a (click)="setContactoSeleccionado(contacto)">{{contacto.nombreApellido}}</a>
+            <td>{{contacto.email}}</td>
             <td>{{contacto.favorito}}</td>
             <td>
-            <button (click)="cambiarFavorito(contacto)">favorito</button>
-          </td>
+            </td>
           </tr>
+          <button (click)="cambiarFavorito()">favorito</button>
         </tbody>
       </table>
     </div>

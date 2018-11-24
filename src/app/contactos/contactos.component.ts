@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Agenda } from '../agenda';
+import { Component, OnInit, Input } from '@angular/core';
 import { Contacto } from '../contacto';
-import { Bootstrap } from '../bootstrap';
+import { ContactosService, refresh } from '../ContactosServices';
 
 @Component({
   selector: 'app-contactos',
@@ -9,48 +8,32 @@ import { Bootstrap } from '../bootstrap';
   styleUrls: ['./contactos.component.css']
 })
 export class ContactosComponent implements OnInit {
-  bootstrap: Bootstrap = new Bootstrap
-  nombreApellidoNuevo: string
-  telefonoNuevo: string
-  emailNuevo: string
+  
+  contactoSeleccionado : Contacto
   stringBuscado: string =""
+  contactos : Array<Contacto> = []
 
-  constructor() { }
-
+  constructor(private contactoService: ContactosService) { }
+  
   ngOnInit() {
-    this.bootstrap.cargarDatos()
+    this.contactoService.getContactos().subscribe(
+      data => this.contactos = data,
+      error => {
+        console.log("error", error)
+        //this.errors.push(error._body)
+      })
   }
   
+  setContactoSeleccionado(contacto){
+    this.contactoSeleccionado = contacto
+  }
+
   getContactos() {
-    return this.bootstrap.agenda.contactos
-    .filter(cont => cont.nombreApellido.includes(this.stringBuscado) ||
-      cont.email.includes(this.stringBuscado) || cont.telefono == this.stringBuscado)
+    return this.contactos
+  }
+  cambiarFavorito() {
+    this.contactoService.cambiarFavorito(this.contactoSeleccionado)
+    refresh()
   }
 
-  agregarContacto() {
-    this.bootstrap.agenda.agregarContacto(new Contacto(
-      this.nombreApellidoNuevo,
-      this.telefonoNuevo,
-      this.emailNuevo
-    ))
-    this.nombreApellidoNuevo = null
-    this.telefonoNuevo = null
-    this.emailNuevo = null
-  }
-
-  cambiarFavorito(contactoSeleccionado : Contacto) {
-    contactoSeleccionado.toggleFavorito()
-  }
-
-  getEnabledAgregar() {
-    return this.validar(this.nombreApellidoNuevo) && this.validar(this.telefonoNuevo) && this.validar(this.emailNuevo)
-  }
-
-  validar(unString: string) {
-    return unString !== null && unString !== ""
-  }
-
-}
-export function refresh() {
-  location.reload(true);
 }
