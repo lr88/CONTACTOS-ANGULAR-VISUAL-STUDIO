@@ -10,10 +10,20 @@
       <label>Buscador de Contactos</label>
       <input type="text" class="form-control" [(ngModel)]="stringBuscado">
     </div>
-    <ul>
-      <li *ngFor="let contacto of getContactos()">
-        {{contacto.nombreApellido}}
-      </li>
-    </ul>
+    <br>
+    <div class="row">
+      <table class="table">
+        <thead >
+          <th>Nombre y Apellido</th>
+          <th>Favorito</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contacto of getContactos()">
+            <td>{{contacto.nombreApellido}}</td>
+            <td>{{contacto.favorito}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
