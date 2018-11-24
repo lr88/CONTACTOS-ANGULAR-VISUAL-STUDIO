@@ -1,17 +1,19 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Contactos 
-  </h1>
-</div>
-<div style="text-align:center">
-<h2 >Buscador deContactos</h2>
-<input >
-
-<ul>
-  <li *ngFor="let contacto of getContactos()">
-    {{contacto}} 
-  </li>
-</ul>
-asd 
+<div class="form-group">
+  <div >
+    <h1>
+      Contactos
+    </h1>
+  </div>
+  <div >
+    <div class="form-group">
+      <label>Buscador de Contactos</label>
+      <input type="text" class="form-control" [(ngModel)]="stringBuscado">
+    </div>
+    <ul>
+      <li *ngFor="let contacto of getContactos()">
+        {{contacto.nombreApellido}}
+      </li>
+    </ul>
+  </div>
 </div>

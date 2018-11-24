@@ -14,18 +14,18 @@ export class ContactosComponent implements OnInit {
   nombreApellidoNuevo: string
   telefonoNuevo: string
   emailNuevo: string
-  stringBuscado: string = ""
+  stringBuscado: string =""
 
   constructor() { }
 
   ngOnInit() {
+    this.bootstrap.cargarDatos()
   }
   
   getContactos() {
-    this.bootstrap.cargarDatos()
     return this.bootstrap.agenda.contactos
-    // .filter(cont => cont.nombreApellido.includes(this.stringBuscado) ||
-    //   cont.email.includes(this.stringBuscado) || cont.telefono == this.stringBuscado)
+    .filter(cont => cont.nombreApellido.includes(this.stringBuscado) ||
+      cont.email.includes(this.stringBuscado) || cont.telefono == this.stringBuscado)
   }
 
   agregarContacto() {
