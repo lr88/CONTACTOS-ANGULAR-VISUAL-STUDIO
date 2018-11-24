@@ -16,11 +16,16 @@
         <thead >
           <th>Nombre y Apellido</th>
           <th>Favorito</th>
+          <th>Cambio de Favoritismo</th>
+        
         </thead>
         <tbody>
           <tr *ngFor="let contacto of getContactos()">
             <td>{{contacto.nombreApellido}}</td>
             <td>{{contacto.favorito}}</td>
+            <td>
+            <button (click)="cambiarFavorito(contacto)">favorito</button>
+          </td>
           </tr>
         </tbody>
       </table>

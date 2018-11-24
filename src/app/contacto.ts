@@ -12,7 +12,7 @@ export class Contacto {
 	}
 
 	toggleFavorito() {
-		return this.favorito = !this.favorito
+		this.favorito = !this.favorito
 	}
 
 	getEnabledEditar() {

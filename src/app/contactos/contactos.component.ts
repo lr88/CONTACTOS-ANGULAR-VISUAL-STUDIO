@@ -10,7 +10,6 @@ import { Bootstrap } from '../bootstrap';
 })
 export class ContactosComponent implements OnInit {
   bootstrap: Bootstrap = new Bootstrap
-  contactoSeleccionado: Contacto
   nombreApellidoNuevo: string
   telefonoNuevo: string
   emailNuevo: string
@@ -39,12 +38,8 @@ export class ContactosComponent implements OnInit {
     this.emailNuevo = null
   }
 
-  cambiarFavorito() {
-    return this.contactoSeleccionado.toggleFavorito
-  }
-
-  getEneableCambiarFavorito() {
-    return this.contactoSeleccionado !== null
+  cambiarFavorito(contactoSeleccionado : Contacto) {
+    contactoSeleccionado.toggleFavorito()
   }
 
   getEnabledAgregar() {
@@ -55,4 +50,7 @@ export class ContactosComponent implements OnInit {
     return unString !== null && unString !== ""
   }
 
+}
+export function refresh() {
+  location.reload(true);
 }
