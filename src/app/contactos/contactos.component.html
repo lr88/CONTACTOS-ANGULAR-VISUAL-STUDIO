@@ -9,6 +9,7 @@
     <div class="form-group">
       <label>Buscador de Contactos</label>
       <input type="text" class="form-control" [(ngModel)]="stringBuscado">
+      <button (click)="buscar()">Buscar</button>
     </div>
     <br>
     <div class="row" class="table-responsive">
@@ -28,6 +29,9 @@
           </tr>
           <button (click)="cambiarFavorito()">favorito</button>
         </tbody>
+        <label *ngIf="contactoSeleccionado">
+            {{contactoSeleccionado.nombreApellido}}
+          </label>
       </table>
     </div>
   </div>

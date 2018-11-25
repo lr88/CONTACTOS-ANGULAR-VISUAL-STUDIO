@@ -10,7 +10,7 @@ export const REST_SERVER_URL = 'http://localhost:9000'
 })
 export class ContactosService {
   constructor(private http: Http) { }
-
+  
   getContactos() {
     return this.http.get(REST_SERVER_URL + "/contactos").pipe(map(this.convertirAContactos))
   }
@@ -18,8 +18,9 @@ export class ContactosService {
     return res.json().map(eventoJson => Contacto.fromJson(eventoJson))
   }
 
-  agregarContacto(arg0: Contacto): any {
-    throw new Error("Method not implemented.");
+  agregarContacto(contacto: Contacto) {
+    const jsonContacto = JSON.stringify(contacto)
+    this.http.put(REST_SERVER_URL + "/agregarContacto",jsonContacto).toPromise()
   }  
 
   async cambiarFavorito(contactoSeleccionado: Contacto) {
@@ -28,6 +29,12 @@ export class ContactosService {
     this.http.put(REST_SERVER_URL + "/cambiarFavorito",jsonContacto).toPromise()
   }
 
+  async buscar(stringBuscado: string) {
+    const jsonBuscar = JSON.parse('{"stringBuscado": "' + 
+    String(stringBuscado) + '" }')
+    this.http.put(REST_SERVER_URL + "/buscar",jsonBuscar).toPromise()
+  }
+  
 }
 
 

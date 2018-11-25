@@ -35,5 +35,9 @@ export class ContactosComponent implements OnInit {
     this.contactoService.cambiarFavorito(this.contactoSeleccionado)
     refresh()
   }
+  buscar() {
+    this.contactoService.buscar(this.stringBuscado)
+    refresh()
+  }
 
 }

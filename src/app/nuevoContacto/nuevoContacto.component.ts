@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Contacto } from '../contacto';
-import { ContactosService } from '../ContactosServices';
+import { ContactosService, refresh } from '../ContactosServices';
 
 @Component({
   selector: 'app-nuevoContacto',
@@ -22,11 +22,13 @@ export class NuevoContactoComponent implements OnInit {
     this.contactoService.agregarContacto(new Contacto(
       this.NuevoNombreApellido,
       this.NuevoTelefono,
-      this.NuevoEmail
+      this.NuevoEmail,
+      this.favorito
     ))
       this.NuevoNombreApellido= null
       this.NuevoTelefono= null
       this.NuevoEmail= null
+      refresh()
   }
   // getEnabledAgregar() {
   //   return this.validar(this.NuevoNombreApellido) && 
