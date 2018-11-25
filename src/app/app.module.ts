@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { ContactosComponent } from './contactos/contactos.component';
 import { NuevoContactoComponent } from './nuevoContacto/nuevoContacto.component';
 import { HttpModule } from '@angular/http'
+import { EditarContactoComponent } from './editarContacto/editarContacto.component';
 
 @NgModule({
    declarations: [
       AppComponent,
       ContactosComponent,
-      NuevoContactoComponent
+      NuevoContactoComponent,
+      EditarContactoComponent
    ],
    imports: [
       BrowserModule,

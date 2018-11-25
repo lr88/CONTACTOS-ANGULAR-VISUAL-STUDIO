@@ -1,20 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Contacto } from '../contacto';
 import { ContactosService, refresh } from '../ContactosServices';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-contactos',
   templateUrl: './contactos.component.html',
   styleUrls: ['./contactos.component.css']
 })
-export class ContactosComponent implements OnInit {
+export class ContactosComponent extends AppComponent implements OnInit {
   
-  contactoSeleccionado : Contacto
   stringBuscado: string =""
   contactos : Array<Contacto> = []
 
-  constructor(private contactoService: ContactosService) { }
-  
   ngOnInit() {
     this.contactoService.getContactos().subscribe(
       data => this.contactos = data,

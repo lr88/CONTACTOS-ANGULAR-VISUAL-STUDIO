@@ -1,11 +1,12 @@
 export class Contacto {
-
+	id: number
 	nombreApellido: string
 	email: string
 	telefono: string
 	favorito: boolean
 
-	constructor(unNombreApellido: string, unEmail: string,unTelefono : string,favoritismo:boolean) {
+	constructor(unID :number,unNombreApellido: string, unEmail: string,unTelefono : string,favoritismo:boolean) {
+		this.id = unID
 		this.nombreApellido = unNombreApellido
 		this.email = unEmail
 		this.telefono = unTelefono
@@ -14,6 +15,7 @@ export class Contacto {
 
 	static fromJson(contactoJSON) {
 		var NuevoContacto = new Contacto(
+			contactoJSON.id,
 			contactoJSON.nombreApellido,
 			contactoJSON.email,
 			contactoJSON.telefono,

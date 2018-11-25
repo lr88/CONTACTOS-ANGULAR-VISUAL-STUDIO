@@ -1,0 +1,26 @@
+<div class="row" class="table-responsive">
+  <table class="table">
+    <thead>
+      <th>campo</th>
+      <th>antes</th>
+      <th>futuro</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Nombre y Apellido</td>
+        <td> {{contactoSeleccionado.nombreApellido}} </td>
+        <input type="text" class="form-control" [(ngModel)]="contactoSeleccionado.nombreApellido">
+      </tr>
+      <tr>
+        <td>Telefono</td>
+        <td> {{contactoSeleccionado.telefono}} </td>
+        <input type="text" class="form-control" [(ngModel)]="contactoSeleccionado.telefono">
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td> {{contactoSeleccionado.email}} </td>
+        <input type="text" class="form-control" [(ngModel)]="contactoSeleccionado.email">
+      </tr>
+      <button (click)="editarContacto()">Editar</button>
+    </tbody>
+  </table>

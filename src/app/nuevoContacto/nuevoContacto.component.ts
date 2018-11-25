@@ -1,34 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { Contacto } from '../contacto';
 import { ContactosService, refresh } from '../ContactosServices';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-nuevoContacto',
   templateUrl: './nuevoContacto.component.html',
   styleUrls: ['./nuevoContacto.component.css']
 })
-export class NuevoContactoComponent implements OnInit {
+export class NuevoContactoComponent extends AppComponent implements OnInit {
   NuevoNombreApellido: string
-	NuevoEmail: string
-	NuevoTelefono: string
-	favorito: boolean = false
-
-  constructor(private contactoService: ContactosService) { }
-
+  NuevoEmail: string
+  NuevoTelefono: string
+  favorito: boolean = false
   ngOnInit() {
   }
 
   agregarContacto() {
-    this.contactoService.agregarContacto(new Contacto(
+    this.contactoService.agregarContacto(new Contacto(null,
       this.NuevoNombreApellido,
       this.NuevoTelefono,
       this.NuevoEmail,
       this.favorito
     ))
-      this.NuevoNombreApellido= null
-      this.NuevoTelefono= null
-      this.NuevoEmail= null
-      refresh()
+    this.NuevoNombreApellido = null
+    this.NuevoTelefono = null
+    this.NuevoEmail = null
+    refresh()
   }
   // getEnabledAgregar() {
   //   return this.validar(this.NuevoNombreApellido) && 

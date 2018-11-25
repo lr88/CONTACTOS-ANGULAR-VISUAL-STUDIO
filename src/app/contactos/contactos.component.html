@@ -1,11 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="form-group">
-  <div >
+  <div>
     <h1>
       Contactos
     </h1>
   </div>
-  <div >
+  <div>
     <div class="form-group">
       <label>Buscador de Contactos</label>
       <input type="text" class="form-control" [(ngModel)]="stringBuscado">
@@ -14,13 +14,15 @@
     <br>
     <div class="row" class="table-responsive">
       <table class="table" *ngIf="getContactos()">
-        <thead >
+        <thead>
+          <th>ID</th>
           <th>Nombre y Apellido</th>
           <th>Email</th>
           <th>Favorito</th>
         </thead>
         <tbody>
           <tr *ngFor="let contacto of getContactos()">
+            <td>{{contacto.id}}</td>
             <a (click)="setContactoSeleccionado(contacto)">{{contacto.nombreApellido}}</a>
             <td>{{contacto.email}}</td>
             <td>{{contacto.favorito}}</td>
@@ -30,8 +32,8 @@
           <button (click)="cambiarFavorito()">favorito</button>
         </tbody>
         <label *ngIf="contactoSeleccionado">
-            {{contactoSeleccionado.nombreApellido}}
-          </label>
+          {{contactoSeleccionado.nombreApellido}}
+        </label>
       </table>
     </div>
   </div>

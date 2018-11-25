@@ -1,13 +1,23 @@
-<div class="form-group">
-  <label>Nombre y Apellido</label>
-  <input type="text" class="form-control" [(ngModel)]="NuevoNombreApellido">
-  <br>
-  <label>Telefono</label>
-  <input type="text" class="form-control" [(ngModel)]="NuevoTelefono">
-  <br>
-  <label>Email</label>
-  <input type="text" class="form-control" [(ngModel)]="NuevoEmail">
-  <br>
-  <button (click)="agregarContacto()">Agregar</button>
-</div>
-          
+<div class="row" class="table-responsive">
+    <table class="table">
+      <thead>
+        <th>Campo</th>
+        <th>Completar</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nombre y Apellido</td>
+          <input type="text" class="form-control" [(ngModel)]="NuevoNombreApellido">
+        </tr>
+        <tr>
+          <td>Telefono</td>
+          <input type="text" class="form-control" [(ngModel)]="NuevoTelefono">
+        </tr>
+        <tr>
+          <td>Email</td>
+          <input type="text" class="form-control" [(ngModel)]="NuevoEmail">
+        </tr>
+        <button (click)="agregarContacto()">Agregar</button>
+      </tbody>
+    </table>
+  

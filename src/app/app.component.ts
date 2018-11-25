@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ContactosService } from './ContactosServices';
+import { Contacto } from './contacto';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'contactosangular';
+  contactoSeleccionado :Contacto = new Contacto(null,"ddd","","",false)
+  constructor(protected contactoService: ContactosService) { }
+
 }
