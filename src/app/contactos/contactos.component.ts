@@ -24,6 +24,7 @@ export class ContactosComponent extends AppComponent implements OnInit {
   
   setContactoSeleccionado(contacto){
     this.contactoService.contactoSeleccionado(contacto)
+    this.contactoSeleccionado = contacto
   }
 
   getContactos() {
