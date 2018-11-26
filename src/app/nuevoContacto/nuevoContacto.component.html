@@ -1,4 +1,9 @@
 <div class="row" class="table-responsive">
+    <div>
+        <h1>
+          Nuevo Contacto
+        </h1>
+      </div>
     <table class="table">
       <thead>
         <th>Campo</th>
@@ -17,7 +22,8 @@
           <td>Email</td>
           <input type="text" class="form-control" [(ngModel)]="NuevoEmail">
         </tr>
-        <button (click)="agregarContacto()">Agregar</button>
+        <button [routerLink]="['/']" (click)="agregarContacto()" >Agregar</button>
+        <button [routerLink]="['/']"> Cancelar</button>
       </tbody>
     </table>
   

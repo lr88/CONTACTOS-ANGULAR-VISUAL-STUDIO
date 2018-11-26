@@ -1,26 +1,28 @@
-<div class="row" class="table-responsive">
+<div class="row" class="table-responsive" *ngIf="contactoSeleccionado">
+  <div>
+    <h1>
+      Editar Contacto
+    </h1>
+  </div>
   <table class="table">
     <thead>
       <th>campo</th>
-      <th>antes</th>
-      <th>futuro</th>
+      <th>Edite el campo</th>
     </thead>
     <tbody>
       <tr>
         <td>Nombre y Apellido</td>
-        <td> {{contactoSeleccionado.nombreApellido}} </td>
-        <input type="text" class="form-control" [(ngModel)]="contactoSeleccionado.nombreApellido">
+        <input type="text" class="form-control" value="contactoSeleccionado.nombreApellido" [(ngModel)]="contactoSeleccionado.nombreApellido">
       </tr>
       <tr>
         <td>Telefono</td>
-        <td> {{contactoSeleccionado.telefono}} </td>
-        <input type="text" class="form-control" [(ngModel)]="contactoSeleccionado.telefono">
+        <input type="text" class="form-control" value="contactoSeleccionado.telefono" [(ngModel)]="contactoSeleccionado.telefono">
       </tr>
       <tr>
         <td>Email</td>
-        <td> {{contactoSeleccionado.email}} </td>
-        <input type="text" class="form-control" [(ngModel)]="contactoSeleccionado.email">
+        <input type="text" class="form-control" value="contactoSeleccionado.email" [(ngModel)]="contactoSeleccionado.email">
       </tr>
-      <button (click)="editarContacto()">Editar</button>
+      <button [routerLink]="['/']" (click)="editarContacto()">Editar</button>
+      <button [routerLink]="['/']"> Cancelar</button>
     </tbody>
   </table>

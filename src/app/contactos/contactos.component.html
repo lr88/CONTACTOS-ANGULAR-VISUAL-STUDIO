@@ -15,26 +15,26 @@
     <div class="row" class="table-responsive">
       <table class="table" *ngIf="getContactos()">
         <thead>
-          <th>ID</th>
           <th>Nombre y Apellido</th>
           <th>Email</th>
           <th>Favorito</th>
         </thead>
         <tbody>
           <tr *ngFor="let contacto of getContactos()">
-            <td>{{contacto.id}}</td>
             <a (click)="setContactoSeleccionado(contacto)">{{contacto.nombreApellido}}</a>
             <td>{{contacto.email}}</td>
             <td>{{contacto.favorito}}</td>
             <td>
             </td>
           </tr>
-          <button (click)="cambiarFavorito()">favorito</button>
         </tbody>
         <label *ngIf="contactoSeleccionado">
           {{contactoSeleccionado.nombreApellido}}
         </label>
       </table>
     </div>
+    <button (click)="cambiarFavorito()" disabled="hayAlgunoSeleccionado()">favorito</button>
+    <button [routerLink]="['/edicion']" disabled="hayAlgunoSeleccionado()" >Editar</button>
+    <button [routerLink]="['/nuevo']"  >Crear uno Nuevo</button>
   </div>
 </div>

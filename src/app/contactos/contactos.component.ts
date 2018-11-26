@@ -23,19 +23,26 @@ export class ContactosComponent extends AppComponent implements OnInit {
   }
   
   setContactoSeleccionado(contacto){
-    this.contactoSeleccionado = contacto
+    this.contactoService.contactoSeleccionado(contacto)
   }
 
   getContactos() {
     return this.contactos
   }
   cambiarFavorito() {
-    this.contactoService.cambiarFavorito(this.contactoSeleccionado)
+    this.contactoService.cambiarFavorito()
     refresh()
   }
   buscar() {
     this.contactoService.buscar(this.stringBuscado)
     refresh()
+  }
+
+  editarSeleccionado(){
+    this.contactoService.editarContacto(this.contactoSeleccionado)
+  }
+  hayAlgunoSeleccionado(){
+    return this.contactoSeleccionado != null
   }
 
 }

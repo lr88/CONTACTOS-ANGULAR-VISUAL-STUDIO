@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ContactosService, refresh } from '../ContactosServices';
 import { Contacto } from '../contacto';
 import { AppComponent } from '../app.component';
@@ -10,13 +10,22 @@ import { AppComponent } from '../app.component';
 })
 export class EditarContactoComponent extends AppComponent implements OnInit {
     
-    ngOnInit() {
-    }
-  
+  @Input() contactoSeleccionado : Contacto
+
+  ngOnInit() {
+    this.contactoService.getContactoSeleccionado().subscribe(
+      data => this.contactoSeleccionado = data,
+      error => {
+        console.log("error", error)
+        //this.errors.push(error._body)
+      })
+  }
+   
+
+
     editarContacto() {
       this.contactoService.editarContacto(this.contactoSeleccionado)
-        this.contactoSeleccionado= null
-        refresh()
+      this.contactoSeleccionado = null;
     }
     // getEnabledAgregar() {
     //   return this.validar(this.NuevoNombreApellido) && 

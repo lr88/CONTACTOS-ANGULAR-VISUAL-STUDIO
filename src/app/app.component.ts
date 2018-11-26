@@ -9,7 +9,7 @@ import { Contacto } from './contacto';
 })
 export class AppComponent {
   title = 'contactosangular';
-  contactoSeleccionado :Contacto = new Contacto(null,"ddd","","",false)
+  contactoSeleccionado :Contacto = new Contacto(null,"","","",false);
   constructor(protected contactoService: ContactosService) { }
 
 }

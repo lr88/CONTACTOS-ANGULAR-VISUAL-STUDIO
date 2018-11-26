@@ -17,23 +17,23 @@ export class NuevoContactoComponent extends AppComponent implements OnInit {
   }
 
   agregarContacto() {
+    if(this.getEnabledAgregar()){
     this.contactoService.agregarContacto(new Contacto(null,
       this.NuevoNombreApellido,
       this.NuevoTelefono,
       this.NuevoEmail,
       this.favorito
-    ))
+    ))}
     this.NuevoNombreApellido = null
     this.NuevoTelefono = null
     this.NuevoEmail = null
-    refresh()
   }
-  // getEnabledAgregar() {
-  //   return this.validar(this.NuevoNombreApellido) && 
-  //   this.validar(this.NuevoTelefono) && 
-  //   this.validar(this.NuevoEmail)
-  // }
-  // validar(unString: string) {
-  //   return unString !== null && unString !== ""
-  // }
+  getEnabledAgregar() {
+    return this.validar(this.NuevoNombreApellido) && 
+    this.validar(this.NuevoTelefono) && 
+    this.validar(this.NuevoEmail)
+  }
+  validar(unString: string) {
+    return unString !== null && unString !== ""
+  }
 }
