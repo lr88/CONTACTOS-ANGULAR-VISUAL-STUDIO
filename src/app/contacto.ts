@@ -5,8 +5,13 @@ export class Contacto {
 	telefono: string
 	favorito: boolean
 
-	constructor(unID :number,unNombreApellido: string, unEmail: string,unTelefono : string,favoritismo:boolean) {
-		this.id = unID
+	constructor(unID :number,
+		unNombreApellido: string,
+		unEmail: string,
+		unTelefono : string,
+		favoritismo:boolean) {
+		
+			this.id = unID
 		this.nombreApellido = unNombreApellido
 		this.email = unEmail
 		this.telefono = unTelefono

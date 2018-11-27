@@ -20,8 +20,8 @@ export class NuevoContactoComponent extends AppComponent implements OnInit {
     if(this.getEnabledAgregar()){
     this.contactoService.agregarContacto(new Contacto(null,
       this.NuevoNombreApellido,
-      this.NuevoTelefono,
       this.NuevoEmail,
+      this.NuevoTelefono,
       this.favorito
     ))}
     this.NuevoNombreApellido = null

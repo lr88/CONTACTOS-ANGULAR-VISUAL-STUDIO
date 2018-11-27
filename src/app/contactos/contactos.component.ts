@@ -21,7 +21,7 @@ export class ContactosComponent extends AppComponent implements OnInit {
         //this.errors.push(error._body)
       })
   }
-  
+
   setContactoSeleccionado(contacto){
     this.contactoService.contactoSeleccionado(contacto)
     this.contactoSeleccionado = contacto
@@ -43,7 +43,7 @@ export class ContactosComponent extends AppComponent implements OnInit {
     this.contactoService.editarContacto(this.contactoSeleccionado)
   }
   hayAlgunoSeleccionado(){
-    return this.contactoSeleccionado != null
+    return this.contactoSeleccionado !== null
   }
 
 }

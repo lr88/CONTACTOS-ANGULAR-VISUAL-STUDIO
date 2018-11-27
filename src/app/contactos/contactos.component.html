@@ -1,4 +1,3 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="form-group">
   <div>
     <h1>
@@ -8,33 +7,44 @@
   <div>
     <div class="form-group">
       <label>Buscador de Contactos</label>
-      <input type="text" class="form-control" [(ngModel)]="stringBuscado">
+      <input type="text" class="form-control" placeholder="Ingrese Nombre o telefono completo" [(ngModel)]="stringBuscado">
       <button (click)="buscar()">Buscar</button>
     </div>
     <br>
     <div class="row" class="table-responsive">
       <table class="table" *ngIf="getContactos()">
         <thead>
+          <th></th>
           <th>Nombre y Apellido</th>
           <th>Email</th>
           <th>Favorito</th>
+          <th></th>
         </thead>
         <tbody>
           <tr *ngFor="let contacto of getContactos()">
-            <a (click)="setContactoSeleccionado(contacto)">{{contacto.nombreApellido}}</a>
-            <td>{{contacto.email}}</td>
-            <td>{{contacto.favorito}}</td>
+            <td></td>
             <td>
+              <a class="badge badge-light" href="#" (click)="setContactoSeleccionado(contacto)">{{contacto.nombreApellido}}</a>
             </td>
+            <td>{{contacto.email}}</td>
+            <td [ngClass]="{'table-success': contacto.favorito , 'table-danger': !contacto.favorito}">{{contacto.favorito
+              == true ? "si" : "No"}}</td>
+              <td></td>
           </tr>
+          <tr></tr>
         </tbody>
       </table>
     </div>
-    <button (click)="cambiarFavorito()" >favorito</button>
-    <button [routerLink]="['/edicion']"  >Editar</button>
-    <button [routerLink]="['/nuevo']"  >Crear uno Nuevo</button>
+    <button (click)="cambiarFavorito()" [disabled]="hayAlgunoSeleccionado()"
+    required="true">favorito</button>
+    <button disabled="hayAlgunoSeleccionado()" [routerLink]="['/edicion']">Editar</button>
+    <button [routerLink]="['/nuevo']">Crear uno Nuevo</button>
   </div>
   <label *ngIf="contactoSeleccionado">
-    Contacto Seleccionado =  
+    Contacto Seleccionado =
     {{contactoSeleccionado.nombreApellido}}</label>
 </div>
+
+<!-- <div class="alert alert-danger" *ngIf="errorMessage">
+    {{errorMessage}}
+</div> -->
