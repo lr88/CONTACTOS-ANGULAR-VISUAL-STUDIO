@@ -35,16 +35,15 @@
         </tbody>
       </table>
     </div>
-    <button (click)="cambiarFavorito()" [disabled]="hayAlgunoSeleccionado()"
-    required="true">favorito</button>
-    <button disabled="hayAlgunoSeleccionado()" [routerLink]="['/edicion']">Editar</button>
+    <button (click)="cambiarFavorito()" >favorito</button>
+    <button  (click)="irAPantallaEdicion()">Editar</button>
     <button [routerLink]="['/nuevo']">Crear uno Nuevo</button>
   </div>
   <label *ngIf="contactoSeleccionado">
     Contacto Seleccionado =
     {{contactoSeleccionado.nombreApellido}}</label>
 </div>
+<div class="alert alert-danger" *ngIf="errorMessage">
+  {{errorMessage}}
+</div>
 
-<!-- <div class="alert alert-danger" *ngIf="errorMessage">
-    {{errorMessage}}
-</div> -->

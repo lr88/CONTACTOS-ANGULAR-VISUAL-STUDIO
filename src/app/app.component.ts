@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ContactosService } from './ContactosServices';
 import { Contacto } from './contacto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { Contacto } from './contacto';
 })
 export class AppComponent {
   title = 'contactosangular';
-  contactoSeleccionado :Contacto = new Contacto(null,"","","",false);
-  constructor(protected contactoService: ContactosService) { }
-
+  contactoSeleccionado :Contacto
+  constructor(protected contactoService: ContactosService, protected router: Router) { }
+ 
 }

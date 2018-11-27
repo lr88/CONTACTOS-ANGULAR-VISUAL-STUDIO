@@ -12,6 +12,7 @@ export class ContactosComponent extends AppComponent implements OnInit {
   
   stringBuscado: string =""
   contactos : Array<Contacto> = []
+  errorMessage
 
   ngOnInit() {
     this.contactoService.getContactos().subscribe(
@@ -25,25 +26,38 @@ export class ContactosComponent extends AppComponent implements OnInit {
   setContactoSeleccionado(contacto){
     this.contactoService.contactoSeleccionado(contacto)
     this.contactoSeleccionado = contacto
+    this.errorMessage = null
   }
 
   getContactos() {
     return this.contactos
   }
   cambiarFavorito() {
+    if(this.contactoSeleccionado != null){
     this.contactoService.cambiarFavorito()
     refresh()
+    this.contactoSeleccionado == null
+    this.errorMessage = null
   }
+  else{
+    this.errorMessage = "No seleccionaste ningun contacto"
+  }
+}
+
   buscar() {
     this.contactoService.buscar(this.stringBuscado)
     refresh()
   }
 
-  editarSeleccionado(){
+  irAPantallaEdicion(){
+    if(this.contactoSeleccionado != null){
     this.contactoService.editarContacto(this.contactoSeleccionado)
+    this.router.navigate(['/edicion'])
+    this.errorMessage = null
+  }  
+  else{
+    this.errorMessage = "No seleccionaste ningun contacto"
   }
-  hayAlgunoSeleccionado(){
-    return this.contactoSeleccionado !== null
-  }
-
+}
+   
 }

@@ -22,8 +22,10 @@
           <td>Email</td>
           <input type="text" class="form-control" [(ngModel)]="NuevoEmail">
         </tr>
-        <button [routerLink]="['/']" (click)="agregarContacto()" >Agregar</button>
+        <button (click)="agregarContacto()" >Agregar</button>
         <button [routerLink]="['/']"> Cancelar</button>
       </tbody>
     </table>
-  
+  <div class="alert alert-danger" *ngIf="errorMessage">
+    {{errorMessage}}
+</div>

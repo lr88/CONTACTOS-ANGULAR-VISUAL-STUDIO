@@ -13,6 +13,7 @@ export class NuevoContactoComponent extends AppComponent implements OnInit {
   NuevoEmail: string
   NuevoTelefono: string
   favorito: boolean = false
+  errorMessage
   ngOnInit() {
   }
 
@@ -23,17 +24,24 @@ export class NuevoContactoComponent extends AppComponent implements OnInit {
       this.NuevoEmail,
       this.NuevoTelefono,
       this.favorito
-    ))}
-    this.NuevoNombreApellido = null
-    this.NuevoTelefono = null
-    this.NuevoEmail = null
+      ))
+      this.router.navigate(['/'])
+      this.errorMessage = null
+      this.NuevoNombreApellido = null
+      this.NuevoTelefono = null
+      this.NuevoEmail = null
+    }
+    else{
+      this.errorMessage = "faltan campos por completar"
+    }
   }
+
   getEnabledAgregar() {
     return this.validar(this.NuevoNombreApellido) && 
     this.validar(this.NuevoTelefono) && 
     this.validar(this.NuevoEmail)
   }
   validar(unString: string) {
-    return unString !== null && unString !== ""
+    return unString != null && unString != ""
   }
 }
