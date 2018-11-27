@@ -44,6 +44,11 @@ export class ContactosComponent extends AppComponent implements OnInit {
   }
 }
 
+
+limpiarBusqueda(){
+  this.stringBuscado = ""
+  this.buscar()
+}
   buscar() {
     this.contactoService.buscar(this.stringBuscado)
     refresh()
